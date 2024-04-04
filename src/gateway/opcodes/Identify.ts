@@ -395,16 +395,8 @@ export async function onIdentify(this: WebSocket, data: Payload) {
 			? guilds.map((x) => new ReadyGuildDTO(x).toJSON())
 			: guilds,
 		relationships: user.relationships.map((x) => x.toPublicRelationship()),
-		read_state: {
-			entries: read_states,
-			partial: false,
-			version: 0, // TODO
-		},
-		user_guild_settings: {
-			entries: user_guild_settings_entries,
-			partial: false,
-			version: 0, // TODO
-		},
+		read_state: read_states,
+		user_guild_settings: user_guild_settings_entries,
 		private_channels: channels,
 		session_id: this.session_id,
 		country_code: user.settings.locale, // TODO: do ip analysis instead
